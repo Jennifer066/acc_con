@@ -53,9 +53,7 @@
 							<a class="nav-link" href="registros.php"
 							><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 								Registros</a>
-							<a class="nav-link" href=""
-							><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-								Reportes</a>
+							
 							<a class="nav-link" href="alu_list.php"
 							><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 								Alumnos</a>
@@ -102,7 +100,7 @@
 													<td><?php if (!(strcmp(1, htmlentities($row['tipo_usuario'], ENT_COMPAT, 'iso-8859-1')))) {echo "Administrador";} ?>
 													<?php if (!(strcmp(2, htmlentities($row['tipo_usuario'], ENT_COMPAT, 'iso-8859-1')))) {echo "Docente";} ?>
 													<?php if (!(strcmp(3, htmlentities($row['tipo_usuario'], ENT_COMPAT, 'iso-8859-1')))) {echo "Encargado";} ?></td>
-													<td><a href="../admin/edi_usu.php?recordID=<?php echo $row['id']; ?>">Editar</a>-<a href="../admin/del_usu.php?recordID=<?php echo $row['id']; ?>">Eliminar</a></td>
+													<td><a href="../admin/edi_usu.php?recordID=<?php echo $row['id']; ?>">Editar</a>-<a href="" onclick="preguntar(<?php echo $row['id'] ?>)">Eliminar</a></td>
 												</tr>
 											<?php } ?>
 										</tbody>
@@ -116,6 +114,19 @@
 		</div>
 			<!--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 			<script src="../js/sweetAlert.js"></script>	-->
+			 <!-- InstanceBeginEditable name="contenidoeditable2" -->
+			<script type="text/javascript">
+            function preguntar(id)
+            {
+                if(confirm('¿Estás seguro que deseas borrar?'))
+                {
+                    window.location.href = "del_usu.php?recordID="+id;
+					alert("Se elimino con exito el usuario");
+					
+                }
+            }
+        </script>
+			<!-- InstanceEndEditable -->
 	</body>
 
 <!-- InstanceEnd --></html>

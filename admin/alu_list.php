@@ -10,6 +10,9 @@
 	$nombre = $_SESSION['nombre'];
 	$tipo_usuario = $_SESSION['tipo_usuario'];
 
+	$sql = "SELECT * FROM carreras";
+	$resultado4 = $mysqli->query($sql);
+
 	$sql = "SELECT * FROM alumnos";
 	$resultado = $mysqli->query($sql);
 ?>
@@ -54,9 +57,7 @@
 							<a class="nav-link" href="registros.php"
 							><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 								Registros</a>
-							<a class="nav-link" href=""
-							><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-								Reportes</a>
+							
 							<a class="nav-link" href="alu_list.php"
 							><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 								Alumnos</a>
@@ -73,9 +74,25 @@
                     <div class="container-fluid">
                         <!-- InstanceBeginEditable name="contenidoeditable" -->
 						<h1>Alumnos</h1>
-						<div class="offset-sm-10 col-sm-9 pull-right">
+						<div class="offset-sm-8 col-sm-9 pull-right">
+							<button type="button"  onclick="location.href='../reportes/reporte1.php'" class="btn btn-primary">Imprimir reporte</button>
 							<button type="button"  onclick="location.href='../admin/agr_alu.php'" class="btn btn-primary">Agregar alumno</button>
 
+						</div>
+						<div class="offset-sm-0 col-sm-9 pull-left">
+							<form class="" action="alu_bus.php" method = "get">
+										<select class="" id="carrera" name="carrera" aria-label="city_name" required>
+											<option value=""> -Selecione una carrera-</option>
+											<?php foreach($resultado4 as $opcion1): ?>
+
+													<option value="<?php echo $opcion1['id_carr']; ?>"><?php echo $opcion1['carrera']; ?></option>
+
+											<?php endforeach ?>
+										</select>
+								<button type="submit"   class="btn btn-primary">Filtrar</button>
+								<button type="button"  onclick="location.href='../admin/alu_list.php'" class="btn btn-primary">Todos</button>
+							</form>	
+							
 						</div>
 						<br>
 						<div class="table-responsive">
@@ -108,7 +125,7 @@
 														?></td>
 													<td><?php echo $row['num_tel']; ?></td>
 													<td><?php echo $row['email']; ?></td>
-													<td><a href="../admin/edi_alu.php?recordID=<?php echo $row['id']; ?>">Editar</a>-<a href="../admin/del_alu.php?recordID=<?php echo $row['id']; ?>">Eliminar</a></td>
+													<td><a href="../admin/edi_alu.php?recordID=<?php echo $row['id']; ?>">Editar</a>-<a href="" onclick="preguntar(<?php echo $row['id'] ?>)">Eliminar</a></td>
 												</tr>
 											<?php } ?>
 										</tbody>
@@ -123,6 +140,20 @@
 		</div>
 			<!--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 			<script src="../js/sweetAlert.js"></script>	-->
+			 <!-- InstanceBeginEditable name="contenidoeditable2" -->
+			 <script type="text/javascript">
+            function preguntar(id)
+            {
+                if(confirm('¿Estás seguro que deseas borrar?'))
+                {
+                    window.location.href = "del_alu.php?recordID="+id;
+					alert("Se elimino con exito el alumno");
+					
+                }
+            }
+        </script>
+
+			<!-- InstanceEndEditable -->
 	</body>
 
 <!-- InstanceEnd --></html>

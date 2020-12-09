@@ -50,9 +50,7 @@
 							<a class="nav-link" href="../admin/registros.php"
 							><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 								Registros</a>
-							<a class="nav-link" href=""
-							><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-								Reportes</a>
+							
 							<a class="nav-link" href="../admin/alu_list.php"
 							><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 								Alumnos</a>
@@ -75,6 +73,7 @@
 		</div>
 			<!--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 			<script src="../js/sweetAlert.js"></script>	-->
+			 <!-- TemplateBeginEditable name="contenidoeditable2" -->contenidoeditable2<!-- TemplateEndEditable -->
 	</body>
 
 </html>

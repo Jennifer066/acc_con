@@ -9,6 +9,9 @@
 
 	$nombre = $_SESSION['nombre'];
 	$tipo_usuario = $_SESSION['tipo_usuario'];
+	
+	$sql = "SELECT * FROM carreras";
+	$resultado4 = $mysqli->query($sql);
 
 	$sql = "select id,num_ctrl,nombre,id_carr,left((fecha_reg),10) as fecha,TIME_FORMAT(fecha_reg,'%r') as Hora_ent,TIME_FORMAT(fecha_sal,'%r') as Hora_sal from reg_ent_sal";
 	$resultado = $mysqli->query($sql);
@@ -54,9 +57,7 @@
 							<a class="nav-link" href="registros.php"
 							><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 								Registros</a>
-							<a class="nav-link" href=""
-							><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-								Reportes</a>
+							
 							<a class="nav-link" href="alu_list.php"
 							><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 								Alumnos</a>
@@ -73,8 +74,29 @@
                     <div class="container-fluid">
                         <!-- InstanceBeginEditable name="contenidoeditable" -->
 						<h1>Registros</h1>
+						<div class="offset-sm-10 col-sm-9 pull-right">
+							
+							<button type="button"  onclick="location.href='../reportes/reporte3.php'" class="btn btn-primary">Imprimir reporte</button>
 
+						</div>
+						<div class="offset-sm-0 col-sm-9 pull-left">
+							<form class="" action="registros_bus.php" method = "get">
+										Desde: <input type="date" id="de" name="de" value="" >
+										Hasta: <input type="date" id="hasta" name="hasta" value="" >
+										<select class="" id="carrera" name="carrera" aria-label="city_name" >
+											<option value=""> -Selecione una carrera-</option>
+											<?php foreach($resultado4 as $opcion1): ?>
 
+													<option value="<?php echo $opcion1['id_carr']; ?>"><?php echo $opcion1['carrera']; ?></option>
+
+											<?php endforeach ?>
+										</select>
+								<button type="submit"   class="btn btn-primary">Filtrar</button>
+								<button type="button"  onclick="location.href='../admin/registros.php'" class="btn btn-primary">Todos</button>
+							</form>	
+							
+						</div>
+						<br>
 						<div class="table-responsive">
 									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 										<thead>
@@ -106,7 +128,7 @@
 													<td><?php echo $row['fecha']; ?></td>
 													<td><?php echo $row['Hora_ent']; ?></td>
 													<td><?php echo $row['Hora_sal']; ?></td>
-													<td><a href="../admin/del_reg.php?recordID=<?php echo $row['id']; ?>">Eliminar</a></td>
+													<td><a href="" onclick="preguntar(<?php echo $row['id'] ?>)" >Eliminar</a></td>
 
 												</tr>
 											<?php } ?>
@@ -122,6 +144,19 @@
 		</div>
 			<!--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 			<script src="../js/sweetAlert.js"></script>	-->
+			 <!-- InstanceBeginEditable name="contenidoeditable2" -->
+			<script type="text/javascript">
+            function preguntar(id)
+            {
+                if(confirm('¿Estás seguro que deseas borrar?'))
+                {
+                    window.location.href = "del_reg.php?recordID="+id;
+					alert("Se elimino con exito el registro");
+					
+                }
+            }
+        </script>
+			<!-- InstanceEndEditable -->
 	</body>
 
 <!-- InstanceEnd --></html>
