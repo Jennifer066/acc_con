@@ -14,7 +14,7 @@
 	$pdf->SetFont('Arial','B',8);
 	$pdf->Cell(28,6,'Numero de control',1,0,'C',1);
 	$pdf->Cell(45,6,'Nombre',1,0,'C',1);
-	$pdf->Cell(62,6,'Carerra',1,0,'C',1);
+	$pdf->Cell(62,6,'Carrera',1,0,'C',1);
 	$pdf->Cell(26,6,'Fecha de registro',1,0,'C',1);
 	$pdf->Cell(18,6,'Entrada',1,0,'C',1);
 	$pdf->Cell(18,6,'Salida',1,1,'C',1);

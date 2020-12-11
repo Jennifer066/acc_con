@@ -14,7 +14,7 @@
 	$pdf->SetFont('Arial','B',8);
 	$pdf->Cell(28,6,'Numero de control',1,0,'C',1);
 	$pdf->Cell(45,6,'Nombre',1,0,'C',1);
-	$pdf->Cell(62,6,'carerra',1,0,'C',1);
+	$pdf->Cell(62,6,'Carrera',1,0,'C',1);
 	$pdf->Cell(28,6,'Numero de telefono',1,0,'C',1);
 	$pdf->Cell(35,6,'Email',1,1,'C',1);
 	
