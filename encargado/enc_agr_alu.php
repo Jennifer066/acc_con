@@ -99,7 +99,7 @@
 								Control acceso</a>
 							<a class="nav-link" href="enc_agr_alu.php"
 							><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-								Agregar Alumno</a>
+								Agregar alumno</a>
 
 
 

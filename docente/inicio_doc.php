@@ -62,6 +62,7 @@
                     <div class="container-fluid">
                         <!-- InstanceBeginEditable name="contenidoeditable" -->Bienvenid@ docente al Sistema de Control de Accesos Bibliotecarios<!-- InstanceEndEditable -->
 					</div>
+                    <img src="../imagenes/bibl.jpg" width="1141px" height="550px">
 				</main>
 
 			</div>
